@@ -1,4 +1,6 @@
 
+using Ecf.Vgames.Db;
+
 namespace Ecf.Vgames
 {
     public class Program
@@ -11,8 +13,18 @@ namespace Ecf.Vgames
 
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+            builder.Services.AddDbContext<GizmondoContext>();
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy(name: "MyPolicy",
+                    policy =>
+                    {
+                        policy.AllowAnyHeader().AllowAnyMethod();
+                        policy.WithOrigins("http://127.0.0.1:5500");
+                    });
+            });
 
             var app = builder.Build();
 
@@ -24,7 +36,7 @@ namespace Ecf.Vgames
             }
 
             app.UseHttpsRedirection();
-
+            app.UseCors("MyPolicy");
             app.UseAuthorization();
 
 

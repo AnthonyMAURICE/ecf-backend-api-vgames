@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 
 namespace Ecf.Vgames.Models
 {
-    public class Publisher
+    public class Publishers
     {
         [Key]
         public int Id { get; set; }
@@ -12,6 +12,6 @@ namespace Ecf.Vgames.Models
         public string? Name { get; set; }
 
         [JsonIgnore]
-        public List<Gizmondo>? GizmondoList { get; set; }
+        public List<Gizmondos>? GizmondoList { get; set; }
     }
 }

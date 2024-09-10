@@ -4,10 +4,13 @@ using System.Text.Json.Serialization;
 
 namespace Ecf.Vgames.Models
 {
-    public class Gizmondo
+    public class Gizmondos
     {
         [Key]
         public int Id { get; set; }
+
+        [Required]
+        public int PublisherId { get; set; }
 
         [Required]
         public string? Name { get; set; }
@@ -18,11 +21,8 @@ namespace Ecf.Vgames.Models
         [Required]
         public string? Dev { get; set; }
 
-        [Required]
-        public int PublisherId { get; set; }
-
         [ForeignKey("PublisherId")]
         [JsonIgnore]
-        public Publisher? Publisher { get; set; }
+        public Publishers? Publisher { get; set; }
     }
 }

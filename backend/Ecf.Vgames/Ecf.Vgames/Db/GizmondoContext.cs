@@ -5,9 +5,9 @@ namespace Ecf.Vgames.Db
 {
     public class GizmondoContext : DbContext
     {
-        public DbSet<Gizmondo> Gizmondoes { get; set; }
+        public DbSet<Gizmondos> Gizmondos { get; set; }
 
-        public DbSet<Publisher> Publisher { get; set; }
+        public DbSet<Publishers> Publishers { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder options)
         {
