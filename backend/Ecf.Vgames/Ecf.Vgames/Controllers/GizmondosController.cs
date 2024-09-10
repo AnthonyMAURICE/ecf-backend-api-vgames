@@ -32,6 +32,13 @@ namespace Ecf.Vgames.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Gizmondos>> GetGizmondos(int id)
         {
+
+            if (_context.Gizmondos == null)
+            {
+                return NoContent();
+            }
+
+
             var gizmondos = await _context.Gizmondos.FindAsync(id);
 
             if (gizmondos == null)
@@ -78,6 +85,11 @@ namespace Ecf.Vgames.Controllers
         [HttpPost]
         public async Task<ActionResult<Gizmondos>> PostGizmondos(Gizmondos gizmondos)
         {
+
+            if (_context.Gizmondos == null)
+            {
+                return NoContent();
+            }
             _context.Gizmondos.Add(gizmondos);
             await _context.SaveChangesAsync();
 

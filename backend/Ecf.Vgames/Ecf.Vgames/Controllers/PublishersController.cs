@@ -32,6 +32,11 @@ namespace Ecf.Vgames.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Publishers>> GetPublishers(int id)
         {
+
+            if (_context.Publishers == null)
+            {
+                return NoContent();
+            }
             var publishers = await _context.Publishers.FindAsync(id);
 
             if (publishers == null)
@@ -78,6 +83,12 @@ namespace Ecf.Vgames.Controllers
         [HttpPost]
         public async Task<ActionResult<Publishers>> PostPublishers(Publishers publishers)
         {
+
+            if (_context.Publishers == null)
+            {
+                return NoContent();
+            }
+
             _context.Publishers.Add(publishers);
             await _context.SaveChangesAsync();
 
